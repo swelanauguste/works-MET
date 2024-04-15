@@ -21,7 +21,7 @@ class Command(BaseCommand):
             # print(time_object, type(time_object))
             # report_time = datetime.strptime(str(hour), "0")
             date_str = row['Date'].strftime('%Y-%m-%d')
-            print(date_str, type(date_str))
+            # print(date_str, type(date_str))
             report = Report(
                 st=row['st'],
                 date=date_str,
