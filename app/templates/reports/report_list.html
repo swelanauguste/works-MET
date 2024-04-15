@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="p-2">
+    <h1>Reports</h1>
+    <form action="{% url 'report-create' %}"
+        method="post">
+        <span class="d-flex">
+            {% csrf_token %}
+            {{form|crispy}}
+        </span>
+        <div class="text-end">
+            <button type="submit"
+                class="btn btn-dark">Submit</button>
+        </div>
+    </form>
+    <br>
+    <div class="table-responsive">
+        <table class="table table-hover table-sm small">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">st</th>
+                    <th scope="col">date</th>
+                    <th scope="col">time</th>
+                    <th scope="col">vis</th>
+                    <th scope="col">t_cld</th>
+                    <th scope="col">dd</th>
+                    <th scope="col">fff</th>
+                    <th scope="col">temp</th>
+                    <th scope="col">dp</th>
+                    <th scope="col">vp</th>
+                    <th scope="col">rh</th>
+                    <th scope="col">msl</th>
+                    <th scope="col">qnh</th>
+                    <th scope="col">w</th>
+                    <th scope="col">ww</th>
+                    <th scope="col">t_lcld</th>
+                    <th scope="col">cld</th>
+                    <th scope="col">low</th>
+                    <th scope="col">mid</th>
+                    <th scope="col">high</th>
+                    <th scope="col">high2</th>
+                    <th scope="col">max</th>
+                    <th scope="col">min</th>
+                    <th scope="col">rr</th>
+                    <th scope="col">tt_time</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ob in object_list %}
+                <tr>
+                    <th scope="row">{{forloop.counter}}</th>
+                    <td>{{ob.st}}</td>
+                    <td>{{ob.date|date:"Y M d"}}</td>
+                    <td>{{ob.time|date:"H i"}}</td>
+                    <td>{{ob.vis}}</td>
+                    <td>{{ob.t_cld}}</td>
+                    <td>{{ob.dd}}</td>
+                    <td>{{ob.fff}}</td>
+                    <td>{{ob.temp}}</td>
+                    <td>{{ob.dp}}</td>
+                    <td>{{ob.vp}}</td>
+                    <td>{{ob.rh}}</td>
+                    <td>{{ob.msl}}</td>
+                    <td>{{ob.qnh}}</td>
+                    <td>{{ob.w}}</td>
+                    <td>{{ob.ww}}</td>
+                    <td>{{ob.t_lcld}}</td>
+                    <td>{{ob.cld}}</td>
+                    <td>{{ob.low}}</td>
+                    <td>{{ob.mid}}</td>
+                    <td>{{ob.high}}</td>
+                    <td>{{ob.high2}}</td>
+                    <td>{{ob.maxx}}</td>
+                    <td>{{ob.minn}}</td>
+                    <td>{{ob.rr}}</td>
+                    <td>{{ob.rr_time}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock content %}
