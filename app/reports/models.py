@@ -11,7 +11,7 @@ class Report(models.Model):
     fff = models.IntegerField(default=0)
     temp = models.FloatField(default=0)
     dp = models.FloatField(default=0)
-    vp = models.FloatField(default=0, blank=True, null=True)
+    vp = models.FloatField(default=0)
     rh = models.IntegerField(default=0)
     msl = models.FloatField(default=0)
     qnh = models.FloatField(default=0)
