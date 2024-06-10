@@ -1,6 +1,5 @@
 from datetime import datetime, time
 
-import numpy
 import pandas as pd
 from django.core.management.base import BaseCommand
 
@@ -14,18 +13,16 @@ class Command(BaseCommand):
         # Read the Excel file
         df = pd.read_excel("static/docs/data.xlsx", engine="openpyxl")
         df["Date"] = pd.to_datetime(df[["Year", "Month", "Day"]])
-        # # Iterate over the rows in the DataFrame
+        
+        reports = []
+        
         for index, row in df.iterrows():
             # Create a new Report object for each row
             hour = row["hr"]
             time_str = f"{hour}::00"
-
-            # print(type(hour), hour)
             time_object = datetime.strptime(time_str, "%H::%M").time()
-            # print(time_object, type(time_object))
-            # report_time = datetime.strptime(str(hour), "0")
             date_str = row["Date"].strftime("%Y-%m-%d")
-            # print(date_str, type(date_str))
+            
             report = Report(
                 st=row["st"],
                 date=date_str,
@@ -53,10 +50,8 @@ class Command(BaseCommand):
                 rr=row["rr"],
                 # rr_time=row['rr time'],
             )
-
-            # Save the Report object to the database
-            report.save()
-            # print(report.vp)
-            self.stdout.write(self.style.SUCCESS(f'Successfully added report {report}'))
-
-        self.stdout.write(self.style.SUCCESS(report))
+            
+            reports.append(report)
+        
+        Report.objects.bulk_create(reports)
+        self.stdout.write(self.style.SUCCESS(f'Successfully added {len(reports)} reports'))
