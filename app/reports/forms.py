@@ -7,6 +7,7 @@ class ReportForm(forms.ModelForm):
     class Meta:
         model = Report
         fields = "__all__"
+        exclude = ['archive']
         widgets = {
             "time": forms.TimeInput(attrs={"type": "time"}),
             "date": forms.DateInput(attrs={"type": "date"}),
