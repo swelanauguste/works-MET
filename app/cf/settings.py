@@ -1,6 +1,11 @@
 import os
 from pathlib import Path
 
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -15,6 +20,8 @@ SECRET_KEY = "django-insecure-fn)x(2trs&vvwfziqi-#uyd8s#^0ma^5$jq)g%t0*d799r8!8d
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
+
+CSRF_TRUSTED_ORIGINS = os.environ.get("CSRF_TRUSTED_ORIGINS").split(" ")
 
 
 # Application definition
