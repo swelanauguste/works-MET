@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="container-fluid my-5 py-5">
+    <h1>{{object}}</h1>
+    <hr>
+    <div class="table-responsive">
+        <table class="table table-hover table-sm small">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">st</th>
+                    <th scope="col">date</th>
+                    <th scope="col">time</th>
+                    <th scope="col">vis</th>
+                    <th scope="col">t_cld</th>
+                    <th scope="col">dd</th>
+                    <th scope="col">fff</th>
+                    <th scope="col">temp</th>
+                    <th scope="col">dp</th>
+                    <th scope="col">vp</th>
+                    <th scope="col">rh</th>
+                    <th scope="col">msl</th>
+                    <th scope="col">qnh</th>
+                    <th scope="col">w</th>
+                    <th scope="col">ww</th>
+                    <th scope="col">t_lcld</th>
+                    <th scope="col">cld</th>
+                    <th scope="col">low</th>
+                    <th scope="col">mid</th>
+                    <th scope="col">high</th>
+                    <th scope="col">high2</th>
+                    <th scope="col">max</th>
+                    <th scope="col">min</th>
+                    <th scope="col">rr</th>
+                    <th scope="col">tt_time</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">{{forloop.counter}}</th>
+                    <td>{{object.st}}</td>
+                    <td>{{object.date|date:"Y M d"}}</td>
+                    <td>{{object.time|date:"H i"}}</td>
+                    <td>{{object.vis}}</td>
+                    <td>{{object.t_cld}}</td>
+                    <td>{{object.dd}}</td>
+                    <td>{{object.fff}}</td>
+                    <td>{{object.temp}}</td>
+                    <td>{{object.dp}}</td>
+                    <td>{{object.vp}}</td>
+                    <td>{{object.rh}}</td>
+                    <td>{{object.msl}}</td>
+                    <td>{{object.qnh}}</td>
+                    <td>{{object.w}}</td>
+                    <td>{{object.ww}}</td>
+                    <td>{{object.t_lcld}}</td>
+                    <td>{{object.cld}}</td>
+                    <td>{{object.low}}</td>
+                    <td>{{object.mid}}</td>
+                    <td>{{object.high}}</td>
+                    <td>{{object.high2}}</td>
+                    <td>{{object.maxx}}</td>
+                    <td>{{object.minn}}</td>
+                    <td>{{object.rr}}</td>
+                    <td>{{object.rr_time}}</td>
+                    <td><a href="{% url 'report-delete' object.pk %}">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock content %}

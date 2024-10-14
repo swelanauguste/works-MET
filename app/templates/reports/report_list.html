@@ -17,6 +17,23 @@
         </div>
     </form>
     <br>
+    <div class="pagination my-2">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+    
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+    
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
     <div class="table-responsive">
         <table class="table table-hover table-sm small">
             <thead>
@@ -47,6 +64,8 @@
                     <th scope="col">min</th>
                     <th scope="col">rr</th>
                     <th scope="col">tt_time</th>
+                    <th scope="col">Detail</th>
+                    <th scope="col">Delete</th>
                 </tr>
             </thead>
             <tbody>
@@ -78,6 +97,8 @@
                     <td>{{ob.minn}}</td>
                     <td>{{ob.rr}}</td>
                     <td>{{ob.rr_time}}</td>
+                    <td><a href="{% url 'report-detail' ob.pk %}">More</a></td>
+                    <td><a href="{% url 'report-delete' ob.pk %}">Delete</a></td>
                 </tr>
                 {% endfor %}
             </tbody>
