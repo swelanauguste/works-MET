@@ -48,9 +48,26 @@
             <h1>Reports</h1>
         </a>
     </nav>
-    {% block content %}
+    <div class="vh-100">
+        {% block content %}
 
-    {% endblock content %}
+        {% endblock content %}
+    </div>
+    <div class="text-bg-dark p-3 mt-2 mb-0">
+
+        <a class="text-decoration-none text-white fw-bold"
+            target="_blank"
+            href="https://swelanauguste.kingship.info/">
+            <img width="20"
+                src="{% static 'images/logo.png' %}"
+                alt="">
+            Swelan R. Auguste &copy; {% now "Y" %}
+        </a>
+        <a class="text-white small me-lg-2"
+            href="tel:17584893909">1-758-489-3909</a>
+        <a class="text-white small"
+            href="mailto:swelanauguste@gmail.com">swelanauguste@gmail.com</a>
+    </div>
     <script
         src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
