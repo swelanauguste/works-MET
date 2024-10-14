@@ -4,7 +4,6 @@
 
 {% block content %}
 <div class="p-2">
-    <h1>Reports</h1>
     <form action="{% url 'report-create' %}"
         method="post">
         <span class="d-flex">
@@ -16,21 +15,21 @@
                 class="btn btn-dark">Submit</button>
         </div>
     </form>
-    <br>
     <div class="pagination my-2">
         <span class="step-links">
             {% if page_obj.has_previous %}
-                <a href="?page=1">&laquo; first</a>
-                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
             {% endif %}
-    
+
             <span class="current">
-                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                Page {{ page_obj.number }} of
+                {{ page_obj.paginator.num_pages }}.
             </span>
-    
+
             {% if page_obj.has_next %}
-                <a href="?page={{ page_obj.next_page_number }}">next</a>
-                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
             {% endif %}
         </span>
     </div>
@@ -64,17 +63,25 @@
                     <th scope="col">min</th>
                     <th scope="col">rr</th>
                     <th scope="col">tt_time</th>
-                    <th scope="col">Details</th>
-                    <th scope="col">Delete</th>
+                    <th scope="col"><span class="material-symbols-outlined">
+                            more_vert
+                        </span></th>
+                    <th scope="col"><span class="material-symbols-outlined">
+                            delete
+                        </span></th>
                 </tr>
             </thead>
             <tbody>
                 {% for ob in object_list %}
                 <tr>
                     <th scope="row">{{forloop.counter}}</th>
-                    <td>{{ob.st}}</td>
-                    <td>{{ob.date|date:"Y M d"}}</td>
-                    <td>{{ob.time|date:"H i"}}</td>
+                    <td><a class="text-dark"
+                            href="{% url 'report-detail' ob.pk %}">{{ob.st}}</a>
+                    </td>
+                    <td><a class="text-dark"
+                            href="{% url 'report-detail' ob.pk %}">{{ob.date|date:"Y-M-d"}}</a>
+                    </td>
+                    <td>{{ob.time|date:"H:i"}}</td>
                     <td>{{ob.vis}}</td>
                     <td>{{ob.t_cld}}</td>
                     <td>{{ob.dd}}</td>
@@ -97,8 +104,16 @@
                     <td>{{ob.minn}}</td>
                     <td>{{ob.rr}}</td>
                     <td>{{ob.rr_time}}</td>
-                    <td><a href="{% url 'report-detail' ob.pk %}">More</a></td>
-                    <td><a href="{% url 'report-delete' ob.pk %}">Delete</a></td>
+                    <td><a class="text-primary"
+                            href="{% url 'report-detail' ob.pk %}"><span
+                                class="material-symbols-outlined">
+                                more_vert
+                            </span></a></td>
+                    <td><a class="text-danger"
+                            href="{% url 'report-delete' ob.pk %}"><span
+                                class="material-symbols-outlined">
+                                delete
+                            </span></a></td>
                 </tr>
                 {% endfor %}
             </tbody>
