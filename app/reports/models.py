@@ -1,10 +1,10 @@
 from django.db import models
-
+from datetime import datetime
 
 class Report(models.Model):
-    st = models.CharField(verbose_name="st", max_length=10)
-    date = models.DateField(blank=True, null=True)
-    time = models.TimeField(blank=True, null=True)
+    st = models.CharField(verbose_name="st", max_length=10, default='TLPC')
+    date = models.DateField(blank=True, null=True, default=datetime.now)
+    time = models.TimeField(blank=True, null=True, default=datetime.now)
     vis = models.IntegerField(default=0)
     t_cld = models.IntegerField(default=0)
     dd = models.IntegerField(default=0)
