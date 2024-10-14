@@ -1,3 +1,5 @@
+{% load static %}
+
 <!doctype html>
 <html lang="en">
 
@@ -22,19 +24,23 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="{% static 'images/logo.png' %}">
+
     <style>
         html,
         body {
             font-family: "Montserrat", sans-serif;
             font-size: 14px;
         }
-
     </style>
 </head>
 
 <body>
     <nav class="text-bg-dark p-3">
-        <a class="text-decoration-none text-white" href="/">Home</a>
+        <a class="text-decoration-none text-white"
+            href="/">Home</a>
     </nav>
     {% block content %}
 
