@@ -6,7 +6,7 @@
 <div class="p-2">
     <form action="{% url 'report-create' %}"
         method="post">
-        <span class="d-flex">
+        <span class="d-flex table-responsive">
             {% csrf_token %}
             {{form|crispy}}
         </span>
