@@ -1,4 +1,6 @@
-from django.shortcuts import redirect
+import plotly.express as px
+from django.core.paginator import Paginator
+from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.views.generic import (
     CreateView,
@@ -18,16 +20,20 @@ def report_delete_view(request, pk):
     return redirect("report-list")
 
 
-class ReportListView(ListView):
-    model = Report
-    paginate_by = 15
+def report_list_view(request):
+    reports = Report.objects.all()
+    paginator = Paginator(reports, 15)
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+    fig = px.line(
+        x=[t.time for t in page_obj],
+        y=[temp.temp for temp in page_obj],
+        labels={"x": "Time of day", "y": "Temperature"},
+    )
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["form"] = ReportForm()  # add form to context
-        return context
-
-    # ordering = ["-date_time"]
+    chart = fig.to_html(full_html=False)
+    context = {"page_obj": page_obj, "form": ReportForm(), "chart": chart}
+    return render(request, "reports/report_list.html", context)
 
 
 class ReportCreateView(CreateView):
