@@ -135,3 +135,11 @@ directory = "static"
 
 if not os.path.exists(directory):
     os.makedirs(directory)
+
+
+# settings.py
+TIME_INPUT_FORMATS = (
+    # '%H:%M:%S',  # '14:30:59'
+    # '%H:%M:%S.%f', # '14:30:59.000200'
+    '%H:%M',     # '14:30'
+)

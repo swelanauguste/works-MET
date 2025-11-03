@@ -9,9 +9,9 @@ class ReportForm(forms.ModelForm):
         fields = "__all__"
         exclude = ['archive']
         widgets = {
-            "time": forms.TimeInput(attrs={"type": "time"}),
+            "time": forms.TimeInput(),
             "date": forms.DateInput(attrs={"type": "date"}),
-            "rr_time": forms.TimeInput(attrs={"type": "time"}),
+            "rr_time": forms.TimeInput(),
         }
         labels = {
             'st': 'st',

@@ -1,10 +1,12 @@
-from django.db import models
 from datetime import datetime
 
+from django.db import models
+
+
 class Report(models.Model):
-    st = models.CharField(verbose_name="st", max_length=10, default='TLPC')
+    st = models.CharField(verbose_name="st", max_length=10, default="TLPC")
     date = models.DateField(blank=True, null=True, default=datetime.now)
-    time = models.TimeField(blank=True, null=True, default=datetime.now)
+    time = models.TimeField(blank=True, null=True, default="16:00")
     vis = models.IntegerField(default=0)
     t_cld = models.IntegerField(default=0)
     dd = models.IntegerField(default=0)
@@ -26,13 +28,13 @@ class Report(models.Model):
     maxx = models.FloatField(default=0)
     minn = models.FloatField(default=0)
     rr = models.FloatField(default=0)
-    rr_time = models.TimeField(null=True, blank=True)
+    rr_time = models.TimeField(null=True, blank=True, default="16:00")
     archive = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    
+
     class Meta:
-        ordering = ['-date', '-time']
+        ordering = ["-date", "-time"]
 
     def __str__(self):
         return f"{self.st} - {self.date} - {self.time}"
