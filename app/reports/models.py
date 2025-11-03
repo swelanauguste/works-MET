@@ -29,7 +29,7 @@ class Report(models.Model):
     minn = models.FloatField(default=0)
     rr = models.FloatField(default=0)
     rr_time = models.TimeField(
-        null=True, blank=True, help_text="hh:mm", default="--:--"
+        null=True, blank=True, help_text="hh:mm", default="00:00"
     )
     archive = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
