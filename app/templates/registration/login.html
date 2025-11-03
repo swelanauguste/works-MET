@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4 col-12 p-5 shadow rounded-4 rounded-end-0">
+            <h1>Login</h1>
+            <hr>
+            <form action=""
+                method="post">
+                {% csrf_token %}
+                {{form|crispy}}
+                <div class="text-end">
+                    <a class="text-muted"
+                        href="">Forget
+                        password</a><br><br>
+                </div>
+                <div class="d-grid">
+                    <button class="btn btn-dark px-5"
+                        type="submit">Login</button>
+                </div>
+            </form>
+        </div>
+        <div id="login-img"
+            class="col bg-dark d-sm-block rounded-4 shadow rounded-start-0">
+
+        </div>
+    </div>
+</div>
+{% endblock content %}

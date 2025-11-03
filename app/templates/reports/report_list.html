@@ -6,7 +6,8 @@
 <div class="p-2">
     <form action="{% url 'report-create' %}"
         method="post">
-        <span class="d-flex table-responsive">
+        <span class="d-xl-inline-flex"
+            style="overflow: auto; overflow-y: hidden;">
             {% csrf_token %}
             {{form|crispy}}
         </span>
@@ -66,9 +67,9 @@
                     <th scope="col"><span class="material-symbols-outlined">
                             more_vert
                         </span></th>
-                    <!-- <th scope="col"><span class="material-symbols-outlined">
+                    <th scope="col"><span class="material-symbols-outlined">
                             delete
-                        </span></th> -->
+                        </span></th>
                 </tr>
             </thead>
             <tbody>
@@ -109,11 +110,11 @@
                                 class="material-symbols-outlined">
                                 more_vert
                             </span></a></td>
-                    <!-- <td><a class="text-danger"
-                            href="#"><span
+                    <td><a class="text-danger"
+                            href="{% url 'report-delete' ob.pk %}"><span
                                 class="material-symbols-outlined">
                                 delete
-                            </span></a></td> -->
+                            </span></a></td>
                 </tr>
                 {% endfor %}
             </tbody>
@@ -137,7 +138,7 @@
             {% endif %}
         </span>
     </div>
-    <div class="container">
+    <div class="container-fluid">
         {{chart|safe}}
 
     </div>

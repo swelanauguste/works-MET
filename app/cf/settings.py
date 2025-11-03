@@ -143,3 +143,9 @@ TIME_INPUT_FORMATS = (
     # '%H:%M:%S.%f', # '14:30:59.000200'
     '%H:%M',     # '14:30'
 )
+
+# Redirect URLs
+LOGIN_REDIRECT_URL = "/"
+LOGIN_URL = "accounts/login/"
+LOGOUT_URL = "accounts/logout/"
+LOGOUT_REDIRECT_URL = "/"

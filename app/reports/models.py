@@ -6,7 +6,7 @@ from django.db import models
 class Report(models.Model):
     st = models.CharField(verbose_name="st", max_length=10, default="TLPC")
     date = models.DateField(blank=True, null=True, default=datetime.now)
-    time = models.TimeField(blank=True, null=True, default="16:00")
+    time = models.TimeField(blank=True, null=True, help_text="hh:mm", default="hh:mm")
     vis = models.IntegerField(default=0)
     t_cld = models.IntegerField(default=0)
     dd = models.IntegerField(default=0)
@@ -28,7 +28,9 @@ class Report(models.Model):
     maxx = models.FloatField(default=0)
     minn = models.FloatField(default=0)
     rr = models.FloatField(default=0)
-    rr_time = models.TimeField(null=True, blank=True, help_text='hh:mm')
+    rr_time = models.TimeField(
+        null=True, blank=True, help_text="hh:mm", default="--:--"
+    )
     archive = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

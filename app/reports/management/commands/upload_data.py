@@ -35,7 +35,7 @@ class Command(BaseCommand):
                     fff=row["fff"],
                     temp=row["temp"],
                     dp=row["dp"],
-                    vp=round(row["vp"], 1),
+                    # vp=round(row["vp"], 1),
                     rh=row["rh"],
                     msl=row["msl"],
                     qnh=row["qnh"],

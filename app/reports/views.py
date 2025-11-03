@@ -1,4 +1,6 @@
 import plotly.express as px
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
@@ -14,12 +16,14 @@ from .forms import ReportForm
 from .models import Report
 
 
+@login_required
 def report_delete_view(request, pk):
     report = Report.objects.get(pk=pk)
     report.delete()
     return redirect("report-list")
 
 
+@login_required
 def report_list_view(request):
     reports = Report.objects.all()
     paginator = Paginator(reports, 15)
@@ -36,16 +40,16 @@ def report_list_view(request):
     return render(request, "reports/report_list.html", context)
 
 
-class ReportCreateView(CreateView):
+class ReportCreateView(LoginRequiredMixin, CreateView):
     model = Report
     form_class = ReportForm
     success_url = reverse_lazy("report-list")
 
 
-class ReportUpdateView(UpdateView):
+class ReportUpdateView(LoginRequiredMixin, UpdateView):
     model = Report
     fields = "__all__"
 
 
-class ReportDetailView(DetailView):
+class ReportDetailView(LoginRequiredMixin, DetailView):
     model = Report

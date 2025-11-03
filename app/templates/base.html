@@ -42,11 +42,22 @@
 </head>
 
 <body>
-    <nav class="text-bg-dark p-3 mb-2">
+    <nav
+        class="d-flex justify-content-between align-items-center text-bg-dark p-3 mb-2">
         <a class="text-decoration-none text-white"
             href="/">
-            <h1>Reports</h1>
+            <h1>MET-Reports</h1>
         </a>
+
+        {% if request.user.is_authenticated %}
+        <form method="post"
+            action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit"
+                class="btn btn-dark fw-bold">Logout</button>
+        </form>
+        {% endif %}
+
     </nav>
     <div class="min-vh-100">
         {% block content %}
