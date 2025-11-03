@@ -23,7 +23,7 @@ class ReportForm(forms.ModelForm):
             'fff': 'fff',
             'temp': 'temp',
             'dp': 'dp',
-            'vp': 'vp',
+            # 'vp': 'vp',
             'rh': 'rh',
             'msl': 'msl',
             'qnh': 'qnh',
