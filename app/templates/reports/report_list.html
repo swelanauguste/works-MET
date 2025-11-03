@@ -103,7 +103,7 @@
                     <td>{{ob.maxx}}</td>
                     <td>{{ob.minn}}</td>
                     <td>{{ob.rr}}</td>
-                    <td>{{ob.rr_time}}</td>
+                    <td>{{ob.rr_time|date:"H:i"}}</td>
                     <td><a class="text-primary"
                             href="{% url 'report-detail' ob.pk %}"><span
                                 class="material-symbols-outlined">

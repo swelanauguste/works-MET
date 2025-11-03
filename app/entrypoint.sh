@@ -15,6 +15,6 @@ python manage.py migrate
 python manage.py makemigrations
 python manage.py createsuperuser --noinput
 python manage.py upload_data
-python manage.py collectstatic --noinput
+# python manage.py collectstatic --noinput
 
 exec "$@"

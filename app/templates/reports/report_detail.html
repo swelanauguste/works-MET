@@ -63,7 +63,7 @@
                     <td>{{object.maxx}}</td>
                     <td>{{object.minn}}</td>
                     <td>{{object.rr}}</td>
-                    <td>{{object.rr_time}}</td>
+                    <td>{{object.rr_time|date:"H:i"}}</td>
                     <td><a class="text-danger" href="{% url 'report-delete' object.pk %}"><span
                                 class="material-symbols-outlined">
                                 delete
